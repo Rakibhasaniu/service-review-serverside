@@ -11,31 +11,31 @@ require('dotenv').config()
 app.use(cors());
 app.use(express.json());
 
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.48q4yql.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.48q4yql.mongodb.net/?retryWrites=true&w=majority`;
 
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// // console.log(uri);
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-// //Verify Access token 
-// // function verifyJWT(req, res, next) {
 
-// //     const authHeader = req.headers.authorization;
+//Verify Access token 
+// function verifyJWT(req, res, next) {
 
-// //     if (!authHeader) {
-// //         return res.status(401).send({ message: 'unauthorized access' });
-// //     }
-// //     const token = authHeader.split(' ')[1];
-// //     jwt.verify(token, process.env.DB_TOKEN, function (err, decoded) {
+//     const authHeader = req.headers.authorization;
 
-// //         if (err) {
-// //             return res.status(403).send({ message: 'unauthorized access2' });
-// //         }
-// //         req.decoded = decoded;
-// //         next()
+//     if (!authHeader) {
+//         return res.status(401).send({ message: 'unauthorized access' });
+//     }
+//     const token = authHeader.split(' ')[1];
+//     jwt.verify(token, process.env.DB_TOKEN, function (err, decoded) {
 
-// //     })
+//         if (err) {
+//             return res.status(403).send({ message: 'unauthorized access2' });
+//         }
+//         req.decoded = decoded;
+//         next()
 
-// // }
+//     })
+
+// }
 
 
 // async function run() {
