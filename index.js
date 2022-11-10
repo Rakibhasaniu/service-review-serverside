@@ -16,7 +16,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@clu
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-//Verify Access token 
+// Verify Access token 
 // function verifyJWT(req, res, next) {
 
 //     const authHeader = req.headers.authorization;
@@ -38,127 +38,127 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 // }
 
 
-// async function run() {
+async function run() {
 
-//     try {
-//         const serviceCollection = client.db('door').collection('services');
-//         const allReviw = client.db('My-Services').collection('review');
-//         //jwt Token Access
-//         // app.post('/jwt', (req, res) => {
-//         //     const user = req.body;
-//         //     const token = jwt.sign(user, process.env.DB_TOKEN, { expiresIn: '1h' });
-//         //     res.send({ token });0
-//         // })
+    try {
+        const serviceCollection = client.db('door').collection('services');
+        const allReviw = client.db('My-Services').collection('review');
+        //jwt Token Access
+        // app.post('/jwt', (req, res) => {
+        //     const user = req.body;
+        //     const token = jwt.sign(user, process.env.DB_TOKEN, { expiresIn: '1h' });
+        //     res.send({ token });0
+        // })
 
-//         //all services find data mongoDb
-//         app.get('/services', async (req, res) => {
-//             const query = {};
-//             const cursor = serviceCollection.find(query);
-//             const result = await cursor.toArray();
-//             res.send(result)
-//         })
-//         //limite data
-//         app.get('/servicesl', async (req, res) => {
-//             const query = {};
-//             const cursor = serviceCollection.find(query);
-//             const result = await cursor.limit(3).toArray();
-//             res.send(result)
-//         })
-//         //add sevice new
-//         app.post('/services', async (req, res) => {
-//             const review = req.body;
-//             const result = await serviceCollection.insertOne(review);
-//             res.send(result)
-//         })
-//         // one service details
-//         app.get('/services/:id', async (req, res) => {
-//             const id = req.params.id;
-//             const query = { _id: ObjectId(id) };
-//             const servicesOne = await serviceCollection.findOne(query); // .sort({ _id: -1 })
-//             res.send(servicesOne)
-//         })
+        //all services find data mongoDb
+        app.get('/services', async (req, res) => {
+            const query = {};
+            const cursor = serviceCollection.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+        //limite data
+        app.get('/servicesl', async (req, res) => {
+            const query = {};
+            const cursor = serviceCollection.find(query);
+            const result = await cursor.limit(3).toArray();
+            res.send(result)
+        })
+        //add sevice new
+        app.post('/services', async (req, res) => {
+            const review = req.body;
+            const result = await serviceCollection.insertOne(review);
+            res.send(result)
+        })
+        // one service details
+        app.get('/services/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const servicesOne = await serviceCollection.findOne(query); // .sort({ _id: -1 })
+            res.send(servicesOne)
+        })
 
-//         // all review service _id filltering sen database
-//         app.get('/all-review', async (req, res) => {
-//             let query = {};
-//             if (req.query.service) {
-//                 query = {
-//                     service: req.query.service
-//                 }
-//             }
-//             const cursor = allReviw.find(query);
-//             const result = await cursor.toArray();
-//             res.send(result)
-//         })
-//         //email filltering
-//         app.get('/all-reviews', async (req, res) => {
-//             //verifyJWT(),
-//             // const decoded = req.decoded;
-//             // if (decoded.email != req.query.email) {
-//             //     res.status(403).send({ message: 'ও সোনা এখানে কি চাও তুমার টাই email যাও' })
-//             // }
+        // all review service _id filltering sen database
+        app.get('/all-review', async (req, res) => {
+            let query = {};
+            if (req.query.service) {
+                query = {
+                    service: req.query.service
+                }
+            }
+            const cursor = allReviw.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+        //email filltering
+        app.get('/all-reviews', async (req, res) => {
+            //verifyJWT(),
+            // const decoded = req.decoded;
+            // if (decoded.email != req.query.email) {
+            //     res.status(403).send({ message: 'ও সোনা এখানে কি চাও তুমার টাই email যাও' })
+            // }
 
-//             let query = {};
-//             if (req.query.email) {
-//                 query = {
-//                     email: req.query.email
-//                 }
-//             }
-//             const cursor = allReviw.find(query);
-//             const result = await cursor.toArray();
-//             res.send(result)
-//         })
-//         //update informatin
-//         app.get('/all-reviews/:id', async (req, res) => {
-//             const id = req.params.id;
-//             const query = { _id: ObjectId(id) };
-//             const result = await allReviw.findOne(query);
-//             res.send(result);
-//         })
-//         // Delete methort 
-//         app.delete('/all-reviews/:id', async (req, res) => {
-//             const id = req.params.id;
-//             // console.log(id)
-//             const query = { _id: ObjectId(id) };
-//             const userDelete = await allReviw.deleteOne(query);
-//             res.send(userDelete);
+            let query = {};
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
+            const cursor = allReviw.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+        //update informatin
+        app.get('/all-reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await allReviw.findOne(query);
+            res.send(result);
+        })
+        // Delete methort 
+        app.delete('/all-reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            // console.log(id)
+            const query = { _id: ObjectId(id) };
+            const userDelete = await allReviw.deleteOne(query);
+            res.send(userDelete);
 
-//         })
-//         // patch methord
-//         app.put('/all-reviews/:id', async (req, res) => {
-//             const id = req.params.id;
-//             const filter = { _id: ObjectId(id) };
-//             const user = req.body;
-//             const option = { upsert: true };
-//             const updateUser = {
-//                 $set: {
-//                     customer: user?.customer,
-//                     message: user?.message,
-//                     email: user?.email,
-//                     serviceName: user?.serviceName,
-//                     reting: user?.reting,
+        })
+        // patch methord
+        app.put('/all-reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const user = req.body;
+            const option = { upsert: true };
+            const updateUser = {
+                $set: {
+                    customer: user?.customer,
+                    message: user?.message,
+                    email: user?.email,
+                    serviceName: user?.serviceName,
+                    reting: user?.reting,
 
-//                 }
-//             }
-//             const result = await allReviw.updateOne(filter, updateUser, option);
-//             res.send(result);
+                }
+            }
+            const result = await allReviw.updateOne(filter, updateUser, option);
+            res.send(result);
 
-//         })
-//         // all review parson add
-//         app.post('/all-review', async (req, res) => {
-//             const review = req.body;
-//             const result = await allReviw.insertOne(review);
-//             res.send(result)
-//         })
+        })
+        // all review parson add
+        app.post('/all-review', async (req, res) => {
+            const review = req.body;
+            const result = await allReviw.insertOne(review);
+            res.send(result)
+        })
 
 
 
-//     } catch (error) {
-//         console.log(error.name, error.message, error.stack);
-//     }
+    } catch (error) {
+        console.log(error.name, error.message, error.stack);
+    }
 
-// }
-// run().catch(error => console.log(error.name, error.message, error.stack))
+}
+run().catch(error => console.log(error.name, error.message, error.stack))
 
 
 
