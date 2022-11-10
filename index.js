@@ -50,35 +50,35 @@ async function run() {
         //     res.send({ token });0
         // })
 
-        //all services find data mongoDb
+   
         app.get('/services', async (req, res) => {
             const query = {};
             const cursor = serviceCollection.find(query);
             const result = await cursor.toArray();
             res.send(result)
         })
-        //limite data
+  
         app.get('/servicesl', async (req, res) => {
             const query = {};
             const cursor = serviceCollection.find(query);
             const result = await cursor.limit(3).toArray();
             res.send(result)
         })
-        //add sevice new
+      
         app.post('/services', async (req, res) => {
             const review = req.body;
             const result = await serviceCollection.insertOne(review);
             res.send(result)
         })
-        // one service details
+      
         app.get('/services/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
-            const servicesOne = await serviceCollection.findOne(query); // .sort({ _id: -1 })
+            const servicesOne = await serviceCollection.findOne(query); // .
             res.send(servicesOne)
         })
 
-        // all review service _id filltering sen database
+      
         app.get('/all-review', async (req, res) => {
             let query = {};
             if (req.query.service) {
