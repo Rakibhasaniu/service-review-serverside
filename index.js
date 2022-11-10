@@ -1,9 +1,9 @@
-// const express = require('express')
-// const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-// const cors = require('cors')
-// const app = express();
-// // const jwt = require('jsonwebtoken');
-// const port = process.env.PORT || 5000;
+const express = require('express')
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const cors = require('cors')
+const app = express();
+// const jwt = require('jsonwebtoken');
+const port = process.env.PORT || 5000;
 
 // require('dotenv').config()
 // //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhc2Vsa2hhbmRoYWthMkBnbWFpbC5jb20iLCJpYXQiOjE2NjgwMTI1MDQsImV4cCI6MTY2ODAxNjEwNH0.hqZB6J2R5SB65MQnpDetK1xowX4EE_uk_poY_4v_0yY
@@ -163,10 +163,10 @@
 
 
 
-// // mongoDb ending
-// app.get('/', (req, res) => {
-//     res.send("server is runing now !")
-// })
+
+app.get('/', (req, res) => {
+    res.send("server is runing now !")
+})
 
 app.listen(port, () => {
     console.log(`Server Runing is ${port}`);
