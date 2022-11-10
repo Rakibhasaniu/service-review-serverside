@@ -5,11 +5,11 @@ const app = express();
 // const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 5000;
 
-// require('dotenv').config()
-// //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhc2Vsa2hhbmRoYWthMkBnbWFpbC5jb20iLCJpYXQiOjE2NjgwMTI1MDQsImV4cCI6MTY2ODAxNjEwNH0.hqZB6J2R5SB65MQnpDetK1xowX4EE_uk_poY_4v_0yY
-// //middle wares
-// app.use(cors());
-// app.use(express.json());
+require('dotenv').config()
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhc2Vsa2hhbmRoYWthMkBnbWFpbC5jb20iLCJpYXQiOjE2NjgwMTI1MDQsImV4cCI6MTY2ODAxNjEwNH0.hqZB6J2R5SB65MQnpDetK1xowX4EE_uk_poY_4v_0yY
+
+app.use(cors());
+app.use(express.json());
 
 // const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.48q4yql.mongodb.net/?retryWrites=true&w=majority`;
 
